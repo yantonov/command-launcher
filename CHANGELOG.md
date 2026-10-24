@@ -8,6 +8,17 @@ Earlier history is in [upstream's releases](https://github.com/criteo/command-la
 
 ## [Unreleased]
 
+### Added
+
+- Minimal harness: `AGENTS.md` for agent routing and `Makefile` with
+  `make check` for full verification (`build` + `test` + `integration`).
+- `make install` target that builds the binary and copies it to
+  `$CDT_HOME`, with an error when the variable is not set. It shows the
+  currently installed version as a hint, prompts for a version (defaulting
+  to `branch-dev`), and passes it to `build.sh` so it is straightforward
+  to add a fork suffix (`fork`, `1.16.2-fork`, etc.) without changing
+  `build.sh`.
+
 ### Fixed
 
 - The update command compares versions numerically instead of lexicographically,
