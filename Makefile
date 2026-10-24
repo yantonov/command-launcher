@@ -25,11 +25,18 @@ help-all:
 
 CDT_HOME ?=
 
-install: build
+install:
 ifeq ($(CDT_HOME),)
 	$(error CDT_HOME is not set)
 endif
-	cp cdt "$(CDT_HOME)/cdt"
+	@echo -n "Current installed version: "; \
+	"$(CDT_HOME)/cdt" version 2>/dev/null || echo "none"; \
+	DEFAULT_VERSION=$$(git rev-parse --abbrev-ref HEAD)-dev; \
+	read -p "Enter version [$$DEFAULT_VERSION]: " chosen_version; \
+	chosen_version=$${chosen_version:-$$DEFAULT_VERSION}; \
+	./build.sh "$$chosen_version"; \
+	cp cdt "$(CDT_HOME)/cdt"; \
+	echo "Installed: cdt version=$$chosen_version"
 
 build:
 	go build -o cdt -ldflags="-X main.version=dev -X main.buildNum=$$(date +'%Y%m%d-%H%M%S') -X main.appName=cdt -X 'main.appLongName=Criteo Dev Toolkit'"
