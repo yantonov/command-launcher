@@ -2,6 +2,12 @@
 
 A command launcher 🚀 made with ❤️
 
+## About this fork
+
+This is a fork of [criteo/command-launcher](https://github.com/criteo/command-launcher).
+Thanks to the upstream maintainers and contributors for building it.
+What differs is listed in [CHANGELOG.md](CHANGELOG.md).
+
 [https://criteo.github.io/command-launcher/](https://criteo.github.io/command-launcher/)
 
 ## Why a command launcher?
